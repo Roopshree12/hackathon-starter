@@ -1,184 +1,251 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #19342c;
+  background: #f5f8f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+button, input, select { font: inherit; }
+button { cursor: pointer; transition: .2s ease; }
+button:disabled { opacity: .55; cursor: not-allowed; }
+
+.app-shell { max-width: 1440px; margin: auto; padding: 28px 5%; }
+.topbar, .brand, .section-heading, .card-top, .quantity-row,
+.clock-row, .impact-row, .claim-row, .my-claim-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand { justify-content: flex-start; gap: 12px; }
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: #e0f2e7;
+  font-size: 25px;
+}
+.brand h1, .brand p, .hero h2, .hero p, .section-heading h2,
+.section-heading p, .metric-card p, .donation-card h3,
+.donation-card p, .post-panel h2, .breakdown h3, .breakdown h4,
+.my-claims h2, .my-claims p { margin-top: 0; }
+
+.brand h1 { margin-bottom: 2px; font: 800 23px 'Manrope', sans-serif; }
+.brand p { margin-bottom: 0; color: #71847a; font-size: 12px; }
+.clock-badge, .count-pill {
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid #e0e9e1;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+  margin: 28px 0 24px;
+  padding: 38px 40px;
+  background: #174f3b;
+  color: white;
+  border-radius: 24px;
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
+.eyebrow { font-size: 10px; letter-spacing: 1.7px; font-weight: 800; color: #59886d; }
+.hero .eyebrow { color: #b7e4c5; }
+.hero h2 { max-width: 650px; font: 800 clamp(27px, 4vw, 43px)/1.18 'Manrope', sans-serif; margin-bottom: 12px; }
+.hero h2 span { color: #b8edc5; }
+.hero-copy { max-width: 520px; color: #e0eee4; line-height: 1.7; margin-bottom: 0; }
+.hero-symbol { font-size: 85px; padding: 10px 22px; }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.panel, .metric-card, .donation-card {
+  background: white;
+  border: 1px solid #e6ece7;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px #183b2608;
 }
+.panel { padding: 24px; margin-bottom: 28px; }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 22px;
+  align-items: start;
 }
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+label { font-size: 12px; font-weight: 700; color: #435b4d; }
+input, select {
   width: 100%;
+  min-width: 0;
+  border: 1px solid #dce5dd;
+  background: #fbfdfb;
+  color: #19342c;
+  padding: 11px 12px;
+  border-radius: 9px;
+  outline: none;
+}
+input:focus, select:focus { border-color: #37835b; box-shadow: 0 0 0 3px #37835b18; }
+.clock-form { display: flex; flex-direction: column; gap: 8px; }
+.clock-row { align-items: stretch; }
+.clock-form small, .hint { color: #85948a; font-size: 11px; }
+.clock-row input { flex: 1; }
+.clock-row button, .primary {
+  background: #207449;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 16px;
+  font-weight: 700;
+}
+.primary:hover, .clock-row button:hover { background: #155c37; }
+.secondary {
+  background: white;
+  color: #315744;
+  border: 1px solid #d9e4db;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+.secondary:hover { background: #eff7f0; }
+.danger-button { color: #a13e35; margin-top: 14px; }
+.text-button { border: 0; background: transparent; color: inherit; font-weight: 700; margin-left: 10px; }
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.section-heading { margin: 32px 0 16px; }
+.section-heading h2, .post-panel h2, .my-claims h2 {
+  margin-bottom: 0;
+  font: 800 23px 'Manrope', sans-serif;
+}
+.section-heading .eyebrow { margin-bottom: 6px; }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.metric-card { padding: 21px; }
+.metric-card p { color: #72847a; font-size: 12px; margin-bottom: 14px; }
+.metric-card strong { font: 800 32px 'Manrope', sans-serif; }
+.metric-card strong span { color: #72907c; font-size: 14px; }
+.metric-card small { display: block; margin-top: 7px; color: #84938a; font-size: 11px; }
+
+.balance {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  margin: 18px 0 28px;
+  border-radius: 14px;
+}
+.balance > span { font-size: 23px; font-weight: 800; }
+.balance strong { font-size: 14px; }
+.balance p { margin: 6px 0 0; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.balanced { background: #e5f5e8; color: #24623c; }
+.unbalanced { background: #fff0ed; color: #a13e35; }
+
+.breakdown h3, .donation-card h4 { font: 800 16px 'Manrope', sans-serif; }
+.impact-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.impact-columns h4 { font-size: 12px; color: #71847a; margin-bottom: 12px; }
+.impact-row { padding: 12px 0; border-bottom: 1px solid #edf1ed; font-size: 12px; }
+.impact-row strong { white-space: nowrap; }
+.impact-row small, .claim-row small { display: block; color: #829087; font-size: 10px; margin-top: 4px; }
+
+.post-panel { max-width: 900px; }
+.post-panel h2 { margin: 0 0 8px; }
+.muted { color: #85938a; font-size: 12px; line-height: 1.6; }
+.donation-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+.full { grid-column: 1 / -1; }
+.hint { margin-bottom: 0; }
+
+.donation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.donation-card { padding: 22px; min-width: 0; }
+.card-top { margin-bottom: 18px; }
+.status, .zone-tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+.zone-tag { background: #f0f3ef; color: #68776d; }
+.status-open, .status-collected { background: #e4f5e9; color: #267047; }
+.status-active { background: #e3f0ff; color: #2b5f98; }
+.status-expired, .status-missed { background: #fff0dd; color: #995e18; }
+.status-cancelled { background: #f0eeee; color: #716b6b; }
+.status-fully_claimed { background: #eae7fc; color: #6251a0; }
+
+.donation-card h3 { font: 800 19px 'Manrope', sans-serif; margin-bottom: 6px; }
+.donor-name { color: #7c8b80; font-size: 12px; margin-bottom: 20px; }
+.quantity-row { background: #f5f9f5; padding: 15px; border-radius: 12px; }
+.quantity-row > div { display: flex; flex-direction: column; gap: 4px; }
+.quantity-row strong { font: 800 20px 'Manrope', sans-serif; }
+.quantity-row small { color: #7a8c80; font-size: 10px; }
+.time-details { margin: 18px 0; }
+.time-details p { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 11px; }
+.time-details p span { color: #819087; }
+.time-details p strong { font-weight: 600; }
+.claim-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 16px; border-top: 1px solid #edf1ed; }
+.claim-form label { align-self: end; }
+.claim-form input { min-width: 0; }
+.claim-form button { grid-column: 1 / -1; margin-top: 4px; }
+.claim-row { padding: 12px 0; border-top: 1px solid #edf1ed; font-size: 12px; }
+.claim-row .status { flex-shrink: 0; }
+.empty-state { grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: #71847a; }
+.empty-state > span { font-size: 36px; }
+.empty-state h3 { color: #294a38; }
+.empty-state p { font-size: 12px; }
+
+.my-claims { margin-top: 28px; }
+.my-claims h2 { margin-bottom: 18px; }
+.my-claim-row { align-items: flex-start; padding: 18px 0; border-bottom: 1px solid #edf1ed; }
+.my-claim-row > div:first-child { min-width: 0; }
+.my-claim-row strong { font-size: 13px; }
+.my-claim-row p { color: #7d8d82; font-size: 11px; margin: 7px 0; }
+.claim-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.claim-actions button { font-size: 11px; }
+
+.alert { padding: 14px 18px; margin: 16px 0; border-radius: 12px; font-size: 13px; }
+.alert pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; line-height: 1.6; }
+.success { background: #e3f5e8; color: #205d39; }
+.error { background: #fff0ed; color: #9d352e; }
+.loading { max-width: 700px; margin: 15vh auto; padding: 24px; text-align: center; }
+.loading h1 { font: 800 32px 'Manrope', sans-serif; }
+.loading button { padding: 12px 18px; border: 0; border-radius: 9px; background: #207449; color: white; }
+
+footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 30px 0 10px; color: #819087; font-size: 11px; }
+footer strong { color: #315744; }
+
+@media (max-width: 850px) {
+  .app-shell { padding: 20px 4%; }
+  .controls { grid-template-columns: 1fr 1fr; }
+  .clock-form { grid-column: 1 / -1; }
+  .hero { padding: 28px 24px; }
+  .hero-symbol { font-size: 55px; padding: 0; }
+  .donation-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .hero-symbol { display: none; }
+  .hero { padding: 26px 20px; border-radius: 17px; }
+  .controls, .metrics-grid, .impact-columns, .donation-form { grid-template-columns: 1fr; }
+  .clock-form, .full { grid-column: auto; }
+  .metric-card { padding: 17px; }
+  .metric-card strong { font-size: 27px; }
+  .panel { padding: 18px; }
+  .section-heading h2 { font-size: 19px; }
+  .my-claim-row { flex-direction: column; }
+  .claim-actions { justify-content: flex-start; }
+  .clock-row { flex-direction: column; }
+  .clock-row button { width: 100%; }
 }

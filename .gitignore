@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local database and backup files
+backend/data/state.json
+backend/data/state.backup.json
